@@ -2,21 +2,1253 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ega The Bag</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap-reboot.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap-grid.css" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap-reboot.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.css"> 
+    <link rel="stylesheet" href="css/bootstrap.css" >
+    <link rel="stylesheet" href="css/owl.carousel.min.css" >
+    <link rel="stylesheet" href="css/font-awesome.css" >
+    <link rel="stylesheet" href="css/plugins.css" >
+    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="css/custom.css" >
+<style>
+  #menu_xs, #menu-toggle {
+    position:fixed;
+    z-index: 300;
+    left: -275px;
+    transition: left 0.4s ease;
+  }
+  #menu-toggle {
+    top: -1px;
+    width: 65px;
+    height: 65px;
+    margin-left: 275px;
+    border: 0;
+    background-color: #fff;
+    padding: 23px 18px 0 18px;
+    border-radius: 0;
+  }
+  #menu-toggle i {
+    display:block;
+    border-top: 3px solid #000;
+    border-bottom: 3px solid #000;
+    height: 19px;
+  }
+  #menu-toggle i:before {
+    content: '';
+    display: block;
+    border-top: 3px solid #000;
+    margin-top: 5px;
+  }
+  #menu_xs {
+    width: 275px;
+    height: 100%;
+    background: #fff;
+  }
+  .sidebar-nav {
+    width: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    height: 100%;
+  }
+  .sidebar-nav li {
+    padding: 14px 0 14px 20px;
+    font-size: 1em;
+    border-bottom: 1px solid #f4f4f4;
+  }
+  .sidebar-nav li:last-child {
+    border: 0;
+    padding-bottom: 0;
+  }
+  .sidebar-nav li a {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    display: block;
+    padding-right: 50px;
+    position: relative;
+  }
+  .sidebar-nav li.current > a {
+    color: #ff551f;
+  }
+  #menu_xs ul {
+    padding-left: 0;
+  }
+  #menu_xs ul a span {
+    text-align: center;
+    width: 50px;
+    font-size: 1.1em;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  #menu_xs ul.sidebar-nav li ul {
+    display: none;
+    list-style: none;
+  }
+  #top-search-sm form {
+    width: 100%;
+    padding: 10px 10px 5px 0;
+    margin-bottom: 15px;
+  }
+  #top-search-sm .form-control {
+    width: 100%;
+    height: 40px;
+  }
+  .body_overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 299;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.4s ease, opacity 0.4s ease;
+  }
+  .body_overlay.toggled {
+    visibility: visible;
+    opacity: 1;
+  }
+  #menu-toggle.toggled,
+  #menu_xs.toggled {
+    left: 0;
+  }
+  #wrapper {
+    transition: all 0.4s;
+  }
+  #wrapper.toggled {
+    margin-left: 275px;
+  }
+  body.toggled{
+    overflow-y: hidden;
+  }
+  #menu_xs .header_search {
+    width: 100%;
+    padding: 0 15px;
+  }
+  #menu_xs .header_search {
+    height: 45px;
+  }
+  #menu_xs .header_search form {
+    padding: 6px 0 0 0;
+    position: relative;
+    height: 43px;
+    visibility: visible;
+    opacity: 1;
+    z-index: 1;
+    top: initial;
+    right: initial;
+  }
+  #menu_xs .header_search form input[type='text'] {
+    border: 0;
+    padding-right: 40px;
+    padding-top: 0;
+    border-bottom: 1px solid #373737;
+    padding-bottom: 0;
+  }
+  #menu_xs .header_search form button {
+    top: 6px;
+    right: 0;
+    font-size: 20px;
+    padding: 0;
+    width: 40px;
+  }
+</style>
   </head>
-  <body>
-    <h1>Hello, world!</h1>
+  <body class="stretched loaded no-transition body_index">
+  <!-- /#sidebar-wrapper -->
+  <a href="#menu-toggle" class="btn btn-default hidden-lg" id="menu-toggle"><i></i></a>
+  <div id="menu_xs" class="hidden-lg">
+    <!-- Sidebar -->
+      <div class="header_search fleft">
+        <form action="/search" class="nomargin">
+          <input type="hidden" name="type" value="product">
+          <input type="text" name="q" class="form-control noboxshadow noradius" placeholder="Bạn muốn tìm gì...">
+          <button class="button nomargin"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <ul class="sidebar-nav unstyled noleftpadding">
+        <li class="current"><a href="#" class="menu">Sản phẩm<span>+</span></a>
+          <ul>
+            <li class=""><a class="sub-menu" href="#"><div>Lọc sản phẩm</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Sản phẩm theo màu</div></a></li>
+            <li class=""><a class="sub-menu" href="/"><div>Sp có thông số kĩ thuật</div></a></li>
+            <li class="current"><a class="sub-menu" href="/"><div>Sản phẩm thương hiệu</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Trang tạp chí</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Hệ thống cửa hàng</div></a></li>
+          </ul>
+        </li>
+        <li class=""><a href="#tui-nu-xach-tay" class="menu">Túi xách tay<span>+</span></a>
+          <ul>
+            <li class=""><a class="sub-menu" href="#"><div>Cỡ lớn</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Cỡ trung</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Cỡ nhỏ</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Ví</div></a></li>
+            <li class=""><a class="sub-menu" href="#"><div>Clutch</div></a></li>
+          </ul>
+        </li>
+        <li class=""><a href="#tui-xach-1">Túi cầm tay</a></li>
+        <li class=""><a href="#">Túi kamicy</a></li>
+        <li class=""><a href="#">Tạp chí</a></li>
+        <li class=""><a href="/pages/he-thong-cua-hang">Hệ thống cửa hàng</a></li>
+      </ul>
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- Document Wrapper ============================================= -->
+    <div id="wrapper" class="clearfix">
+      <!-- Top Bar ============================================= -->
+        <div id="top-bar" class="hidden-xs hidden-sm">
+          <div class="container clearfix">
+            <div class="row">
+              <div class="col-lg-4 col-md-4 col-xs-4">
+                <p class="nobottommargin">
+                  <strong><i class="fa fa-phone"></i> <a href="tel:19001267">19001267</a></strong>
+                  | <strong><i class="fa fa-envelope"></i> <a href="mailto:vanphan2512@gmail.com">vanphan2512@gmail.com</a></strong>
+                </p>
+              </div>
+              <div class="col-lg-4 col-md-3 hidden-sm hidden-xs top-search">
+                <form action="/search">
+                  <input type="hidden" name="type" value="product">
+                  <input type="text" name="q" placeholder="Bạn tìm gì..." autocomplete="off">
+                </form>
+              </div>
+              <div class="col-lg-4 col-md-5 col-xs-8 top_link_wrapper pull-right">
+                <!-- Top Links ============================================= -->
+                <div class="top-links pull-right">
+                  <ul>
+                    <li><a href="/pages/about-us">Giới thiệu</a></li>
+                    <li><a href="/pages/lien-he">Liên hệ</a></li>
+                    <li><a href="/pages/he-thong-cua-hang">Hệ thống cửa hàng</a></li>
+                  </ul>
+                </div><!-- .top-links end -->
+              </div>
+            </div>
+          </div>
+        </div>      
+        <!-- #top-bar end -->
+        <!-- Header ============================================ -->
+        <header id="header" class="style_1">
+          <div id="header-wrap">
+            <div class="container clearfix">
+                  <div class="header_icon fright hidden-xs hidden-sm">
+                      <div class="header_login">
+                        <a href="#" title="" class="awemenu-icon">
+                            <i class="glyphicon glyphicon-user"></i>
+                        </a>
+                        <ul class="header_login_content unstyled">
+                            <li><a href="#">Đăng nhập</a></li>
+                            <li><a href="#">Đăng ký</a></li>
+                        </ul>
+                      </div>
+                      <div id="top-cart" class="top-cart-block">
+                        <a href="#" id="top-cart-trigger" class="">
+                            <i class="fa fa-shopping-cart"></i>
+                            <span class="top_cart_qty">0</span>
+                        </a>
+                        <div class="top-cart-content">
+                            <div class="minicart-header">Chưa có sản phẩm trong giỏ!</div>
+                            <div class="minicart-footer">
+                                <div class="minicart-actions clearfix">
+                                    <a class="button" href="#"><span class="text">VÀO CỬA HÀNG</span></a>
+                                </div>
+                            </div>
+
+                        </div>
+                      </div>
+                     
+                  </div>
+                  <div class="primary_menu_wrap fright hidden-md hidden-sm hidden-xs">
+                  <nav id="primary-menu" class="hidden-xs hidden-sm">
+                    <ul>
+                        <!-- normal sub menu -->
+                        <li class="current">
+                            <a class="menu" href="#">
+                                <div>
+                                    <div class="menu_icon">
+
+                                    </div>
+                                    Sản phẩm
+                                </div>
+                            </a>
+                            <i class="fa fa-caret-down"></i>
+                            <ul class="">
+                                <div class="submenu_group">
+                                    <div class="submenu_col">
+                                        <li class=""><a class="sub-menu" href="#"><div>Lọc sản phẩm</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Sản phẩm theo màu</div></a></li>
+                                        <li class=""><a class="sub-menu" href="/"><div>Sp có thông số kĩ thuật</div></a></li>
+                                        <li class="current"><a class="sub-menu" href="#"><div>Sản phẩm thương hiệu</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Trang tạp chí</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Hệ thống cửa hàng</div></a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- end normal sub menu -->
+
+                        <!-- normal sub menu -->
+                        <li class="">
+                            <a class="menu" href="/collections/tui-nu-xach-tay">
+                                <div>
+                                  <div class="menu_icon"></div>
+                                  Túi xách tay
+                                </div>
+                            </a>
+                            <i class="fa fa-caret-down"></i>
+                            <ul class="">
+                                <div class="submenu_group">
+                                    <div class="submenu_col">
+                                        <li class=""><a class="sub-menu" href="#"><div>Cỡ lớn</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Cỡ trung</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Cỡ nhỏ</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Ví</div></a></li>
+                                        <li class=""><a class="sub-menu" href="#"><div>Clutch</div></a></li>
+                                    </div>
+                                </div>
+                            </ul>
+                        </li>
+                        <!-- end normal sub menu -->
+                        <li class=""><a href="#"><div>Túi cầm tay</div></a></li>
+                        <li class=""><a href="/collections/"><div>Túi kamicy</div></a></li>
+                        <li class=""><a href="/pages/magazine"><div>Tạp chí</div></a></li>
+                        <li class=""><a href="/pages/he-thong-cua-hang"><div>Hệ thống cửa hàng</div></a></li>
+                    </ul>
+                  </nav>
+
+                  
+                      <!-- #primary-menu end -->
+                  </div>
+                  <!-- Logo ============================================= -->
+
+                  <div id="logo">
+                    <h1 class="nomargin" title="The Bag">
+                        <a title="The Bag" href="#" class="" >
+                            <img src="images/logo.png" alt="The Bag">
+                        </a>
+                    </h1>
+                  </div><!-- #logo end -->
+
+                  <div class="cart_mb hidden-md hidden-lg">
+                    <div id="top-cart" class="top-cart-block">
+                      <a href="/cart" id="top-cart-trigger" class="">
+                          <i class="fa fa-shopping-cart"></i>
+
+                          <span class="top_cart_qty">0</span>
+                      </a>
+                      <div class="top-cart-content">
+
+                          <div class="minicart-header">Chưa có sản phẩm trong giỏ!</div>
+                          <div class="minicart-footer">
+                              <div class="minicart-actions clearfix">
+                                  <a class="button" href="#"><span class="text">VÀO CỬA HÀNG</span></a>
+                              </div>
+                          </div>
+
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" id="topbar_trigger"><i class="fa fa-ellipsis-v hidden-lg hidden-md"></i></a>
+                  <div id="topbar_mb" class="hidden-md hidden-lg text-right">
+                    <p class="nobottommargin pull-right clearfix">
+                        <strong>Số điện thoại: <a href="tel:19001267">19001267</a></strong>
+                        <strong>Email: <a href="mailto:hello@egany.com">hello@egany.com</a></strong>
+                    </p>
+                  <!-- Top Links ============================================= -->
+                    <div class="top-links pull-right clearfix">
+                        <ul>
+                            <li><a href="/pages/about-us">Giới thiệu</a></li>
+                            <li><a href="/pages/lien-he">Liên hệ</a></li>
+                            <li><a href="/pages/he-thong-cua-hang">Hệ thống cửa hàng</a></li>
+                            <li><a href="/account/login">Đăng nhập / Đăng ký</a></li>
+                        </ul>
+                    </div><!-- .top-links end -->
+                  </div>
+
+            </div>
+          </div>  
+        </header>
+        <!-- #header end -->
+        <!-- #banner -->
+        <section id="slider" class="nopadding clearfix slick-initialized slick-slider">
+
+            <div class="slick-list draggable" id="slick">
+                <div><img src="images/slideshow_1.jpg"></div>
+                <div><img src="images/slideshow_2.jpg"></div>            
+            </div>
+
+        </section>
+        <!-- #end banner -->
+        <div class="clear"></div>
+        <!-- Content ============================================= -->
+        <section id="content">
+            <div class="policies nobottommargin">
+                <div class="container clearfix">
+                  <div class="row">
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="feature-box fbox-plain fbox-dark fbox-small">
+                            <div class="fbox-icon">
+                                <img src="images/policies_icon_1.png" alt="The Bag">
+                            </div>
+                            <h3>Miễn phí giao hàng</h3>
+                            <p class="notopmargin">Nhận hàng trong vòng 3 ngày</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                      <div class="feature-box fbox-plain fbox-dark fbox-small">
+                          <div class="fbox-icon">
+                              <img src="images/policies_icon_2.png" alt="The Bag">
+                          </div>
+                          <h3>Quà tặng</h3>
+                          <p class="notopmargin">Nhiều quà tặng và ưu đãi hấp dẫn</p>
+                      </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="feature-box fbox-plain fbox-dark fbox-small">
+                            <div class="fbox-icon">
+                                <img src="images/policies_icon_3.png" alt="The Bag">
+                            </div>
+                            <h3>Bảo đảm chất lượng</h3>
+                            <p class="notopmargin">Sản phẩm đã dược kiểm định</p>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-3">
+                        <div class="feature-box fbox-plain fbox-dark fbox-small">
+                            <div class="fbox-icon">
+                                <img src="images/policies_icon_4.png" alt="The Bag">
+                            </div>
+                            <h3>HOTLINE: <a href="tel:08 7300 5757">08 7300 5757</a></h3>
+                            <p class="notopmargin">Dịch vụ hỗ trợ bạn 24/7</p>
+                        </div>  
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="container clearfix">
+                <div class="index_banner_wrap">
+                    <div class="row">
+                        <div class="index_banner_item col-xs-4">
+                            <div class="interactive_banner style_1">
+                                <a href="#">
+                                    <div class="interactive_img">
+                                        <img src="images/index_banner_1.jpg" alt="The Bag">
+                                    </div>
+                                    <div class="interactive_overlay">
+                                        <div class="interactive_content">
+                                            <h2>Hot</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="index_banner_item col-xs-4">
+                            <div class="interactive_banner style_1">
+                                <a href="#">
+                                    <div class="interactive_img">
+                                        <img src="images/index_banner_2.jpg" alt="The Bag">
+                                    </div>
+                                    <div class="interactive_overlay">
+                                        <div class="interactive_content">
+                                            <h2>Hot</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="index_banner_item col-xs-4">
+                            <div class="interactive_banner style_1">
+                                <a href="#">
+                                    <div class="interactive_img">
+                                        <img src="images/index_banner_3.jpg" alt="The Bag">
+                                    </div>
+                                    <div class="interactive_overlay">
+                                        <div class="interactive_content">
+                                            <h2>Hot</h2>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <!-- collection group -->
+                <div class="index_col_wrap nobottommargin section nobg" id="tech_store_index_col_1">
+                    <div class="block_title">
+                        <h3>
+                            <a href="/collections/tui-xach-1">
+                                TÚI NỮ XÁCH TAY
+                            </a>
+                        </h3>
+                    </div>
+                    <ul class="index_col_menu">
+                        <li><a href="#">Cỡ lớn</a></li>
+                        <li><a href="#">Cỡ trung</a></li>
+                        <li><a href="#">Cỡ nhỏ</a></li>
+                        <li><a href="#">Ví</a></li>
+                        <li><a href="#">Clutch</a></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-xs-12 index_col_products">
+                            <div class="row">
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div class="index_col_wrap nobottommargin section nobg" id="tech_store_index_col_1">
+                    <div class="block_title">
+                        <h3>
+                            <a href="/collections/tui-xach-1">
+                                TÚI NỮ CẦM TAY
+                            </a>
+                        </h3>
+                    </div>
+                    <ul class="index_col_menu">
+                        <li><a href="#">Cỡ lớn</a></li>
+                        <li><a href="#">Cỡ trung</a></li>
+                        <li><a href="#">Cỡ nhỏ</a></li>
+                        <li><a href="#">Ví</a></li>
+                        <li><a href="#">Clutch</a></li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-xs-12 index_col_products">
+                            <div class="row">
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/glwdj7bk_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/yhbeious_9dcd6377daec4822a8b37887194df2a7_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/mrptdob5_a7696a7b87f84f608577a79a41a92d59_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="product_single col-xs-6 col-md-3">
+                                    <div class="product clearfix">
+                                        <div class="product-image">
+                                            <a href="#">
+                                                <img  alt="Túi birkin ổ khóa Cabwer đỏ" src="images/gbrywbhc_c941641b89c74135953da271d041b2c3_large.jpg" style="background: none;">
+                                            </a>
+                                            <div class="product_overlay hidden-sm hidden-xs style_2">
+                                                <form method="post" id="" enctype="multipart/form-data" action="/cart/add">
+                                                    <div class="quick_action clearfix">
+                                                    <input type="hidden" name="variantId" value="1015042210">
+                                                    <input type="hidden" name="quantity" value="1">
+                                                    <a data-role="addtocart" href="#add-with-pop-up" product_url="/products/tui-birkin-o-khoa-cabwer-do" data-toggle="tooltip" title="" class="product_quick_add" data-original-title="Thêm vào giỏ"><i class="fa fa-shopping-cart"></i></a>
+                                                    <a href="#" data-toggle="tooltip" title="" class="ega-quicklook-btn" data-url="/products/tui-birkin-o-khoa-cabwer-do" data-modalcontent="quicklook-content" data-target="#quicklook-modal" data-original-title="Xem nhanh">
+                                                    <i class="fa fa-eye"></i>
+                                                    </a>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <div class="product-desc">
+                                            <div class="product-title">
+                                                <h4>
+                                                    <a href="#" title="Túi birkin ổ khóa Cabwer đỏ">Túi birkin ổ khóa Cabwer đỏ</a>
+                                                </h4>
+                                            </div>
+                                            <div class="product-price">
+                                            <ins>1,240,000₫ </ins>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end collection group -->
+                <!-- popular brand -->
+                <div class="popular_brand section nobottommargin nobg">
+                    <div class="popular_brand_title fancy-title title-border title-center">
+                        <h2>THƯƠNG HIỆU NỔI TIẾNG</h2>
+                    </div>
+                    <div class="popular_brand_content style_1 owl-carousel owl-theme">
+                        <div class="item"><img src="images/popular_brand_img_4.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_5.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_6.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_7.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_8.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_9.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_4.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_5.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_6.png" alt="The Bag"></div>
+                        <div class="item"><img src="images/popular_brand_img_7.png" alt="The Bag"></div>
+                    </div>
+
+                </div>
+                
+                <!-- #content end -->
+            </div>
+        </section>
+        <!-- #content end -->
+
+        <!-- Footer ============================================= -->
+        <div class="container">
+          <div class="subscribe_group ohidden">
+            
+            <div class="col-sm-6 col-md-8 col-xs-12 subscribe_group_left ohidden noleftpadding">
+              <h5 class="hidden-xs hidden-sm">
+                <i class="fa fa-envelope-o" style="margin-right: 5px; font-size: 25px; vertical-align: middle; line-height: 38px;"></i>
+                ĐĂNG KÝ NHẬN TIN KHUYẾN MÃI
+              </h5>
+              <div id="widget-subscribe-form-result" data-notify-type="success" data-notify-msg=""></div>
+              <form accept-charset="UTF-8" id="widget-subscribe-form" action="/account/contact" role="form" method="post" class="nobottommargin">
+                <div class="input-group divcenter">
+                  <input name="form_type" type="hidden" value="customer">
+                  <input name="utf8" type="hidden" value="✓">
+                  <input type="hidden" id="contact_tags" name="contact[tags]" value="khách hàng tiềm năng,Bản tin">
+                  <input type="hidden" id="newsletter-first-name" name="contact[first_name]" value="(Người đăng ký)">
+                  <input type="hidden" id="newsletter-last-name" name="contact[last_name]" value="Bản tin"> 
+                  <input style="height: 38px; padding: 4px 5px; border-right: 0; box-shadow: none;" type="email" id="newsletter-email-3" name="contact[email]" class="form-control required email" placeholder="Nhập email của bạn">
+                  <!--<input type="text" id="newsletter-email" name="contact[email]" placeholder="nhập email của bạn.." class="form-control">-->                                    
+                  <span class="input-group-btn">
+                    <button style="" class="btn btnSignup-3" type="submit">
+                      <i class="fa fa-paper-plane-o"></i>
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+            <div class="subscribe_group_right col-xs-12 col-sm-6 col-md-4 text-right norightpadding">
+              <a href="#" class="si-facebook social-icon si-dark si-colored">
+                <i class="fa fa-facebook"></i>
+                <i class="fa fa-facebook"></i>
+              </a>
+              <a href="#" class="si-gplus social-icon si-dark si-colored">
+                <i class="fa fa-google-plus"></i>
+                <i class="fa fa-google-plus"></i>
+              </a>
+              <a href="#" class="si-twitter social-icon si-dark si-colored">
+                <i class="fa fa-twitter"></i>
+                <i class="fa fa-twitter"></i>
+              </a>
+              <a href="#" class="si-yahoo social-icon si-dark si-colored">
+                <i class="fa-yahoo fa"></i>
+                <i class="fa fa-yahoo"></i>
+              </a>
+              <a href="#" class="si-pinterest social-icon si-dark si-colored">
+                <i class="fa fa-pinterest-p"></i>
+                <i class="fa fa-pinterest-p"></i>
+              </a>
+              <a href="#" class="si-rss social-icon si-dark si-colored">
+                <i class="fa fa-rss"></i>
+                <i class="fa fa-rss"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <footer id="footer" class="dark">
+          <div class="container">
+            <!-- Footer Widgets ============================================= -->
+            <div class="style_1 prefooter_wrap footer-widgets-wrap clearfix">
+              <div class="row">
+                <div class="prefooter_one col-xs-12 text-center">
+                  <div class="widget clearfix">
+                      <a href="#" class="footer_logo">
+                        <img  alt="The Bag" src="images/footer_logo.png" style="background: none;">
+                      </a>
+                      <p></p>
+                      <p>Túi xách - Phụ kiện không thể thiếu của phái đẹp</p>
+                      <p></p>
+                  </div>
+                </div>
+                <div class="prefooter_one col-xs-12">
+                  <div class="widget widget_links clearfix">
+                    <h4>Liên hệ</h4>
+                    <p>Kênh mua sắm trực tuyến giá tốt hàng đầu Việt Nam</p>
+                    <address>
+                        <p>
+                        <img alt="61/2 Quang Trung, P.10 Q. Gò Vấp, TP. HCM" src="images/pre_footer_icon_address.png">
+                        <span>61/2 Quang Trung, P.10 Q. Gò Vấp, TP. HCM</span></p>
+
+                        <p>
+                        <img alt="(91) 8547 632521" src="images/pre_footer_icon_phone.png">
+                        <a href="tel:(91) 8547 632521">(91) 8547 632521</a> </p>
+                        <p>
+                        <img alt="hello@egany.com" src="images/pre_footer_icon_email.png">
+                        <a href="mailto:vanphan2512@gmail.com">vanphan2512@gmail.com</a></p>
+                    </address> 
+                  </div>                 
+                </div>
+                <div class="prefooter_one col-xs-12">
+                  <div class="widget widget_links clearfix">
+                      <h4 class="widget_trigger">Giới thiệu
+                          <i class="visible-xs fa fa-plus-square pull-right"></i>
+                      </h4>
+                      <ul class="widget_content">
+
+                          <li><a href="#">Sản phẩm</a></li>
+
+                          <li><a href="#">Túi xách tay</a></li>
+
+                          <li><a href="#">Túi cầm tay</a></li>
+
+                          <li><a href="#">Túi kamicy</a></li>
+
+                          <li><a href="#">Tạp chí</a></li>
+
+                          <li><a href="#">Hệ thống cửa hàng</a></li>
+
+                      </ul>
+                  </div>                  
+                </div>
+                <div class="prefooter_one col-xs-12">
+                  <div class="widget widget_links clearfix">
+                    <h4 class="widget_trigger">Hướng dẫn
+                        <i class="visible-xs fa fa-plus-square pull-right"></i>
+                    </h4>
+                    <ul class="widget_content">
+
+                        <li><a href="#">Câu hỏi thường gặp</a></li>
+
+                        <li><a href="#">Hướng dẫn cách tính size</a></li>
+
+                        <li><a href="#">Chính sách đổi trả</a></li>
+
+                        <li><a href="#">Hướng dẫn bảo quản</a></li>
+
+                        <li><a href="#">Hướng dẫn thanh toán</a></li>
+
+                        <li><a href="#">Hướng dẫn mua hàng</a></li>
+
+                    </ul>
+                  </div>
+                </div>
+                <div class="prefooter_one col-xs-12">
+                  <div class="widget clearfix" style="">
+                      <div class="widget clearfix payment_block">       
+                          <h4>Chứng nhận</h4>
+                          <img  src="images/payment_img.png" style="background: none;">
+                      </div>
+
+                      <a href="#">
+                          <img  src="images/register_img.png" style="background: none;">
+                      </a>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <!-- .footer-widgets-wrap end -->
+          </div>
+          <!-- Copyrights ============================================= -->
+          <div id="copyrights">
+              <div class="container clearfix">
+                  <div class="col-md-6 nopadding">
+                      © Bản quyền thuộc về <a href="#" target="_blank">EGANY</a>. 
+                      <a target="_blank" href="#">Powered by Haravan</a>
+                      <div class="copyright-links">
+                          <a href="#">Tìm kiếm</a>
+                          / <a href="/pages/about-us">Giới thiệu</a>
+                      </div>
+                  </div>
+                  <div class="col-md-6 text-right nopadding">
+                      EGANY Co.Ltd - 12345 Quang Trung, Q. Gò Vấp, Tp.HCM | Email: <a href="mailto:vanphan2512@gmail.com">vanphan2512@gmail.com</a> | Hotline: <a href="tel:1900.123.789">1900.123.789</a>
+                  </div>
+              </div>
+          </div>
+          <!-- #copyrights end -->
+        </footer>
+        <!-- #footer end -->
+
+    </div>    
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/slim.js"  crossorigin="anonymous"></script>
-    <script src="js/popper.min.js"  crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <!--  <script src="js/slim.js"></script> -->
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script>
+      $('.popular_brand_content').owlCarousel({
+        dots: false,
+        loop: true,
+        
+          autoplay: true,
+        
+        responsive: {
+          0: {
+            items:3
+          },
+          479: {
+            items:6
+          }
+        }
+      });
+    
+  </script>
+  <script>
+  $('#slick').slick({
+    prevArrow: '<button type="button" class="slick-prev"><i class="fa fa-angle-left"></i></button>',
+    nextArrow: '<button type="button" class="slick-next"><i class="fa fa-angle-right"></i></button>',
+    autoplay:true,
+    autoplaySpeed: 5000,
+    fade: true,
+    responsive: [
+      {
+        breakpoint: 991,
+        settings: {
+          dots: true,
+          arrows: false
+        }
+      }
+    ]
+  });
+</script>
+<script>
+  function animationHover(element, animation){
+    element = $(element);
+        var subul = element.find('ul');
+    element.hover(
+        function() {
+            subul.addClass('animated ' + animation);        
+        },
+        function(){
+            //wait for animation to finish before removing classes
+                        subul.removeClass('animated ' + animation);        
+        });
+  }
+
+    $("#sidebar-wrapper ul li a span").click(function( event ) {
+        event.preventDefault();
+        var li = $(this).parents('li');
+        li.children('ul').toggle('slow');
+    });
+
+     $('#primary-menu > ul > li').each(function() {
+        animationHover(this, 'bounce');
+    });
+  
+// auto scroll add vào header
+  $(window).scroll(function() {    
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 200) {
+          $("#header").addClass("sticky-header");
+      } else {
+          $("#header").removeClass("sticky-header");
+      }
+  });
+</script>
+<script>
+
+  //responsive menu
+  $("#menu-toggle, .body_overlay").click(function(e) {
+    e.preventDefault();
+    var $show_menu = $('#menu_xs, .body_overlay, body, #menu-toggle');
+    $show_menu.toggleClass("toggled");
+  });
+  $('#menu_xs ul a span').click(function(e) {
+    e.preventDefault();
+    $(this).parent().next().toggle(200);
+    if($(this).text() == '+')
+      $(this).text('-');
+    else 
+      $(this).text('+');
+  })
+  //end responsive menu 
+</script>
   </body>
 </html>
